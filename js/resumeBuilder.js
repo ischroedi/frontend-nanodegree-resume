@@ -17,6 +17,7 @@ var bio = {
   	"twitter": "@ischroedi",
   	"location": "Erfurt (Germany)"
   },
+  "skills": ["Python", "HTML5", "CSS3", "JavaScript"]
 };
 
 var education = {
@@ -91,9 +92,65 @@ $("#header").append(formattedRole);
 var formattedContact = HTMLcontactGeneric.replace("%data%", bio.contacts);
 
 
-
+// 
 var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
 $("#header").prepend(formattedBioPic);
+/**
+if (bio.skills.length>0) {
+  $("#header").append(HTMLskillsStart);
+
+  var formattedSkills = HTMLskills.replace("%data%",bio.skills[0]);
+  $("#skills").append(formattedSkills);
+  var formattedSkills = HTMLskills.replace("%data%",bio.skills[1]);
+  $("#skills").append(formattedSkills);
+  var formattedSkills = HTMLskills.replace("%data%",bio.skills[2]);
+  $("#skills").append(formattedSkills);
+}
+**/
+
+  var formattedMobile = HTMLmobile.replace("%data%",bio.contacts.mobile);
+  $("#header").append(formattedMobile);
+
+  var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
+  $("#header").append(formattedEmail);
+
+  var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);
+  $("#header").append(formattedGithub);
+
+  var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
+  $("#header").append(formattedLocation);
+
+  var formattedMessage = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
+  $("#header").append(formattedMessage);
+
+//bio.display();
+
+
+
+// Section Projects
+
+projects.display = function () {
+  for (var i = 0; i < projects.projects.length; i++) {
+    $("#projects").append(HTMLprojectStart);
+
+    var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
+    $(".project-entry:last").append(formattedProjectTitle);
+
+    var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
+    $(".project-entry:last").append(formattedProjectDates);
+
+    var formattedProjectDescription = HTMLprojectDescription.replace("%data%",projects.projects[i].description);
+    $(".project-entry:last").append(formattedProjectDescription);
+
+    if (projects.projects[i].images.length > 0) {
+      for (image in projects.projects[i].images) {
+        var formattedImages = HTMLprojectImage.replace("%data%", projects.projects[i].images[image]);
+        $(".project-entry:last").append(formattedImages);
+      }
+    }
+  }
+};
+//projects.display();
 
 
 for (works in work){
