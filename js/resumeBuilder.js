@@ -81,8 +81,19 @@ var work = {
   };
  
 
-$("#main").append(bio.name);
-$("#header").append(bio.role);
+
+var formattedName = HTMLheaderName.replace("%data%", bio.name);
+$("#header").prepend(formattedName);
+
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+$("#header").append(formattedRole);
+
+var formattedContact = HTMLcontactGeneric.replace("%data%", bio.contacts);
+
+
+
+var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
+$("#header").prepend(formattedBioPic);
 
 
 for (works in work){
