@@ -50,8 +50,8 @@ var education = {
 var work = {
        jobs : [{
 
-        "employer" : HTMLworkEmployer.replace("%data%","Police TH"),
-        "title" : HTMLworkTitle.replace("%data%","IT Trainer"),
+        "employer" : "Police TH",
+        "title" : "IT Trainer",
         "location" : HTMLworkLocation.replace("%data%","Meiningen"),
         "datesWorked" : HTMLworkDates.replace("%data%","2017-present"),
         "description" : HTMLworkDescription.replace("%data%","Teaching the COPS IT skills.")
@@ -81,10 +81,37 @@ var work = {
   };
  
 
-$("#main").append(bio.name);
-$("#header").append(bio.role);
+
+var formattedName = HTMLheaderName.replace("%data%", bio.name);
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+
+$("#header").prepend(formattedName);
+$("#header").append(formattedRole);
 
 
-for (works in work){
-	console.log(work[works.jobs]);
-}
+
+
+//work Section
+
+for (job in work.jobs){
+    $("#workExperience").append(HTMLworkStart);
+
+    var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+    var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].employer);
+
+/**
+	if (work.hasOwnProperty(job)){
+	   $("#workExperience").prepend(HTMLworkStart);
+
+	  console.log(work[job]);
+	}
+
+	**/
+
+	//console.log(work[works.jobs.title]);
+	//console.log(work[works.jobs.location]);
+	//datesWorked
+
+
+
+//}
