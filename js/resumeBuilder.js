@@ -1,7 +1,9 @@
 
 var projects = {
-  "projects": ["Fernstudium.com", "2009-2017", "Portal Building", "images/197x148.gif"],
-  "projects": []
+  "projects": ["Fernstudium.com", "2009-2017", "Portal Building", "images/197x148.gif"],   /// Q: How is to put more projects into
+  "projects": ["Aristolo.com", "2016-2017", "Performance Optimization", "images/Aristolo.png"],
+  "projects": ["Hypnose-Experte.de", "2014-present", "Performance Optimization, SEO, UX", "images/HypnoseExperte.png"],
+
 
 };
 
@@ -49,11 +51,11 @@ var education = {
 };
 
 var work = {
-       jobs : [{
+       jobs : [{ //Q: Whats this DataStructure and How do I getting information of this? 
 
-        "employer" : "Police TH",
+        "employer" : "Police TH",  // Q: or is this the better choice ? 
         "title" : "IT Trainer",
-        "location" : HTMLworkLocation.replace("%data%","Meiningen"),
+        "location" : HTMLworkLocation.replace("%data%","Meiningen"), // Q: is this version also possible to work with
         "datesWorked" : HTMLworkDates.replace("%data%","2017-present"),
         "description" : HTMLworkDescription.replace("%data%","Teaching the COPS IT skills.")
     },
@@ -82,12 +84,9 @@ var work = {
   };
  
 
-<<<<<<< HEAD
-||||||| merged common ancestors
-$("#main").append(bio.name);
-$("#header").append(bio.role);
-=======
 
+// Bio section
+function displayBio(){
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 $("#header").prepend(formattedName);
 
@@ -97,10 +96,12 @@ $("#header").append(formattedRole);
 var formattedContact = HTMLcontactGeneric.replace("%data%", bio.contacts);
 
 
-// 
+ 
 var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
 $("#header").prepend(formattedBioPic);
-/**
+
+
+
 if (bio.skills.length>0) {
   $("#header").append(HTMLskillsStart);
 
@@ -111,7 +112,7 @@ if (bio.skills.length>0) {
   var formattedSkills = HTMLskills.replace("%data%",bio.skills[2]);
   $("#skills").append(formattedSkills);
 }
-**/
+
 
   var formattedMobile = HTMLmobile.replace("%data%",bio.contacts.mobile);
   $("#header").append(formattedMobile);
@@ -127,14 +128,15 @@ if (bio.skills.length>0) {
 
   var formattedMessage = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
   $("#header").append(formattedMessage);
+};
 
-//bio.display();
+displayBio();
 
 
 
 // Section Projects
 
-projects.display = function () {
+var displayProjects = function () {
   for (var i = 0; i < projects.projects.length; i++) {
     $("#projects").append(HTMLprojectStart);
 
@@ -155,8 +157,9 @@ projects.display = function () {
     }
   }
 };
-//projects.display();
->>>>>>> 8a77242fa1d1d4ccfd2add3dd9d59b03563fe309
+displayProjects();
+
+//>>>>>>> 8a77242fa1d1d4ccfd2add3dd9d59b03563fe309 -- Problem with github - with working on two pc - automerge
 
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
@@ -168,12 +171,18 @@ $("#header").append(formattedRole);
 
 
 //work Section
+function displayWork(){
+  for (job in work.jobs){
+      $("#workExperience").append(HTMLworkStart);
 
-for (job in work.jobs){
-    $("#workExperience").append(HTMLworkStart);
+      var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+      var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
 
-    var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-    var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].employer);
+      /// Q: How is the adresse the work.jobs ..... 
+      // its a dict with an array ? 
+
+///// Q: - how had I put it into the website
+//// Q: should I use the for-in Loop or other Loops instead in practical use? 
 
 /**
 	if (work.hasOwnProperty(job)){
@@ -190,4 +199,7 @@ for (job in work.jobs){
 
 
 
-//}
+   } // end of for
+}; //end of display work
+
+displayWork();
